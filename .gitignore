@@ -1,0 +1,38 @@
+# macOS
+.DS_Store
+# Python
+__pycache__/
+*.pyc
+*.py[cod]
+*$py.class
+.Python
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+# Django/local runtime files
+db.sqlite3
+*.sqlite3
+media/
+test_media/
+venv/
+staticfiles/
+celerybeat-schedule
+celerybeat.pid
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+# Logs
+*.log
+logs/
+# IDE/editor files
+.idea/
+.vscode/
+*.swp
+*.swo

@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: txndb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432" # exposes to your Mac for debugging
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379" # exposes to your Mac for debugging
+
+  api:
+    build: .
+    command: >
+      sh -c "until python manage.py migrate; do sleep 2; done &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app # live reload — code changes reflect instantly
+    ports:
+      - "8000:8000"
+    env_file: .env
+    depends_on:
+      - db
+      - redis
+
+  worker:
+    build: .
+    command: celery -A config worker --loglevel=info
+    volumes:
+      - .:/app
+    env_file: .env
+    depends_on:
+      - db
+      - redis
+
+volumes:
+  pgdata:

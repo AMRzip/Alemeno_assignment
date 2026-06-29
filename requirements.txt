@@ -1,0 +1,8 @@
+django
+djangorestframework
+psycopg2-binary
+celery[redis]
+redis
+pandas
+python-decouple
+google-generativeai
