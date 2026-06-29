@@ -219,9 +219,7 @@ flowchart LR
 
 ## Postman Collection
 
-Import `postman/AI-Powered-Transaction-Processing-Pipeline.postman_collection.json`
+Import `AI-Powered-Transaction-Processing-Pipeline.postman_collection.json`
 into Postman to test all API endpoints. The collection uses `baseUrl` set to
 `http://localhost:8000` and stores the uploaded `job_id` automatically as
 `jobId` for the status and results requests.
-
-See [code/README.md](code/README.md) for additional pipeline notes.
